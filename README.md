@@ -10,3 +10,5 @@ pip install --upgrade huggingface_hub==0.25.2
 > pip install -r requirements.txt
 
 
+
+엔터 누르면 얼굴 등록함
