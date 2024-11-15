@@ -21,7 +21,7 @@ db = client.get_or_create_collection(
 ibed = imgbeddings()
 
 # 유사도 임계값 설정
-similarity_threshold = 0.10
+similarity_threshold = 0.09
 
 # VideoCapture 초기화
 cap = cv2.VideoCapture(0)
@@ -37,7 +37,7 @@ def generate_new_label():
     new_label = f"a{count + 1:05d}"  # a00001, a00002 형태로 생성
     return new_label
 
-with mp_face_detection.FaceDetection(model_selection=0, min_detection_confidence=0.5) as face_detection:
+with mp_face_detection.FaceDetection(model_selection=0, min_detection_confidence=0.4) as face_detection:
     while cap.isOpened():
         success, image = cap.read()
         if not success:
