@@ -50,10 +50,10 @@ imgbeddings는 OpenAI 의 강력한 CLIP 모델 과 Hugging Face transforms를 �
 [참고](https://pypi.org/project/imgbeddings/)
 
 ```
-main_hugging.py
+python main_hugging.py
 ```
 
-엔터 누르면 얼굴 등록함
+**엔터 누르면 얼굴 등록함**
 
 #### 2. MTCNN, InceptionResnetV1
 
@@ -62,5 +62,7 @@ main_hugging.py
 이미지 특징 추출: InceptionResnetV1
 
 ```
-main_local.py
+python main_local.py
 ```
+
+**엔터 누르면 얼굴 등록함**
