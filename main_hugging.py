@@ -80,7 +80,7 @@ with mp_face_detection.FaceDetection(model_selection=0, min_detection_confidence
                             n_results=1,
                             include=["distances", "metadatas"]
                         )
-                        print('search_results:', search_results)
+                        # print('search_results:', search_results)
                         try:
                             if (search_results["distances"] and 
                                 len(search_results["distances"][0]) > 0 and 
@@ -95,12 +95,12 @@ with mp_face_detection.FaceDetection(model_selection=0, min_detection_confidence
             else:
                 labels = previous_labels
 
-            # 바운딩 박스 및 라벨 표시
+            # 바운딩 박스 및 라벨 표시 (색상 분기 적용)
             for bbox, label in zip(current_bboxes, labels):
                 x1, y1, x2, y2 = bbox
-                cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                cv2.putText(image, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1,
-                            (0, 255, 0) if label != "Unknown" else (0, 0, 255), 2)
+                color = (0, 255, 0) if label != "Unknown" else (0, 0, 255)
+                cv2.rectangle(image, (x1, y1), (x2, y2), color, 2)
+                cv2.putText(image, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
 
         # 이전 바운딩 박스 및 라벨 업데이트
         previous_bboxes = current_bboxes
@@ -134,9 +134,10 @@ with mp_face_detection.FaceDetection(model_selection=0, min_detection_confidence
                         )
                         print(f"New face embedding saved with label '{new_label}'")
                         
-                        # 현재 프레임에 새로운 라벨을 즉시 반영
-                        cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                        cv2.putText(image, new_label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+                        # 현재 프레임에 새로운 라벨을 즉시 반영 (초록색)
+                        color = (0, 255, 0)
+                        cv2.rectangle(image, (x1, y1), (x2, y2), color, 2)
+                        cv2.putText(image, new_label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
 
 cap.release()
 cv2.destroyAllWindows()
