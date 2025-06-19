@@ -69,8 +69,8 @@ while cap.isOpened():
                         # aligned_face = aligned_face.unsqueeze(0).to(device)
                         embedding = resnet(aligned_face.to(device)).detach().cpu().numpy()[0]
                         
-                        print('embedding.shape')
-                        print(embedding.shape) 
+                        # print('embedding.shape')
+                        # print(embedding.shape) 
                         
                         # ChromaDB에서 유사한 얼굴 검색
                         search_results = db.query(
